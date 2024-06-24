@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    color: #777;
+    margin: 5px 0 20px;
+}
+
+.profile img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile p {
+    font-size: 1.2em;
+    margin: 0 0 20px;
+}
+
+.social-links h2, .projects h2, .contact h2 {
+    margin-bottom: 10px;
+}
+
+.links a, .project-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #0077b5; /* LinkedIn link color */
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.links a:hover, .project-links a:hover {
+    transform: scale(1.1);
+}
+
+.contact p {
+    margin: 5px 0;
+}
+
+.contact a {
+    color: #0077b5;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Fade-in animation */
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
