@@ -1,88 +1,408 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+/* Сброс стилей и базовые настройки */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
 }
 
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    max-width: 500px;
-    text-align: center;
-}
-
-header h1 {
+/* Системные шрифты Apple */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #1d1d1f;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
     margin: 0;
-    font-size: 2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-header p {
-    color: #777;
-    margin: 5px 0 20px;
-}
-
-.profile img {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-.profile p {
-    font-size: 1.2em;
-    margin: 0 0 20px;
-}
-
-.social-links h2, .projects h2, .contact h2 {
-    margin-bottom: 10px;
-}
-
-.links a, .project-links a {
-    display: inline-block;
-    margin: 0 10px;
-    color: #0077b5; /* LinkedIn link color */
-    text-decoration: none;
-    transition: transform 0.2s;
-}
-
-.links a:hover, .project-links a:hover {
-    transform: scale(1.1);
-}
-
-.contact p {
-    margin: 5px 0;
-}
-
-.contact a {
-    color: #0077b5;
-    text-decoration: none;
-}
-
-.contact a:hover {
-    text-decoration: underline;
-}
-
-/* Fade-in animation */
 .container {
-    animation: fadeIn 1s ease-in-out;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 40px;
+    animation: fadeIn 1.2s ease-out;
 }
 
+/* Анимация появления */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Переключатель языка */
+.language-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #515154;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn.active {
+    background: #0071e3;
+    color: white;
+    border-color: #0071e3;
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+
+.lang-btn.active:hover {
+    background: #0077ed;
+    box-shadow: 0 6px 16px rgba(0, 113, 227, 0.4);
+}
+
+/* Заголовок и профиль */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.name {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    color: #1d1d1f;
+}
+
+.title {
+    font-size: 20px;
+    color: #86868b;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.bio {
+    font-size: 18px;
+    color: #515154;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    margin-top: 10px;
+}
+
+/* Основной контент */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Секция проектов - главный акцент */
+.projects-section {
+    width: 100%;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #1d1d1f;
+}
+
+/* Сетка проектов */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* Карточка проекта */
+.project-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0071e3, #00d4ff);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Иконка проекта */
+.project-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 8px;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.project-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1d1d1f;
+    letter-spacing: -0.3px;
+}
+
+.project-description {
+    font-size: 17px;
+    color: #515154;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #0071e3;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 12px 0;
+}
+
+.project-link:hover {
+    color: #0077ed;
+    gap: 15px;
+}
+
+.arrow {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Секция социальных ссылок */
+.social-section {
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.social-link {
+    font-size: 17px;
+    color: #515154;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #0071e3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 20px;
+    }
+
+    .language-switcher {
+        margin-bottom: 15px;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+    main {
+        gap: 40px;
+    }
+
+    .lang-btn {
+        padding: 6px 16px;
+        font-size: 14px;
+    }
+
+    .name {
+        font-size: 36px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .bio {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .project-card {
+        padding: 40px 30px;
+    }
+
+    .project-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+    }
+
+    .project-title {
+        font-size: 28px;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .social-link {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    main {
+        gap: 80px;
+    }
+
+    .header {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .name {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .header {
+        margin-bottom: 25px;
+    }
+
+    main {
+        gap: 30px;
+    }
+
+    .project-card {
+        padding: 30px 20px;
+    }
+
+    .project-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        margin-bottom: 16px;
+    }
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
 }

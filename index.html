@@ -1,41 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Aleksandr Beliakov — Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Aleksandr Beliakov</h1>
-            <p>Entrepreneur/AQA Engineer</p>
+        <div class="language-switcher">
+            <button class="lang-btn active" data-lang="ru">RU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <header class="header">
+            <div class="profile-section">
+                <img src="profile_new.jpg" alt="Aleksandr Beliakov" class="profile-image">
+                <h1 class="name">Aleksandr Beliakov</h1>
+                <p class="title">Entrepreneur / AQA Engineer</p>
+                <p class="bio" data-i18n="bio">Привет! Я люблю изучать новое и сразу применять знания на практике.</p>
+            </div>
         </header>
-        <section class="profile">
-            <img src="profile.jpg" alt="Profile Picture">
-            <p>Hello! I'm Aleksandr, I love learning new things and immediately applying my knowledge.</p>
-        </section>
-        <section class="social-links">
-            <h2>Social Links</h2>
-            <div class="links">
-                <a href="https://www.linkedin.com/in/aleksandr-beliakov/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/sanekbel" target="_blank">GitHub</a>
-                <a href="https://t.me/sanekbel" target="_blank">Telegram</a>
-            </div>
-        </section>
-        <section class="projects">
-            <h2>Telegram Bots</h2>
-            <div class="project-links">
-                <a href="https://t.me/events_list_bot" target="_blank">Events List</a>
-                <a href="https://t.me/GPT4TurboTelegramBot" target="_blank">Chat GPT</a>
-            </div>
-        </section>
-        <section class="contact">
-            <h2>Contact Information</h2>
-            <p>Email: <a href="mailto:mail@abeliakov.cc">mail@abeliakov.cc</a></p>
-<!--            <p>Phone: +1 123 456 7890</p>-->
-        </section>
+
+        <main>
+            <!-- Основной акцент на проектах -->
+            <section class="projects-section">
+                <h2 class="section-title" data-i18n="projects-title">Проекты</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="icons/events-list.png" alt="Events List" class="project-icon" onerror="this.style.display='none'">
+                        <h3 class="project-title">Events List</h3>
+                        <p class="project-description" data-i18n="events-list-desc">Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.</p>
+                        <a href="https://t.me/events_list_bot" target="_blank" class="project-link">
+                            <span data-i18n="open-telegram">Открыть в Telegram</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <img src="icons/isittrue.png" alt="IsItTrue" class="project-icon" onerror="this.style.display='none'">
+                        <h3 class="project-title">IsItTrue</h3>
+                        <p class="project-description" data-i18n="isittrue-desc">Telegram-бот для проверки видео на фейки и манипуляции. Анализирует контент из Instagram, TikTok и YouTube, определяя подделки и редактирование. Помогает отличить реальные факты видео от сгенерированных или измененных с помощью ИИ.</p>
+                        <a href="https://t.me/instfactcheckbot" target="_blank" class="project-link">
+                            <span data-i18n="open-telegram">Открыть в Telegram</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <img src="icons/vipn.png" alt="ViPN" class="project-icon" onerror="this.style.display='none'">
+                        <h3 class="project-title">ViPN</h3>
+                        <p class="project-description" data-i18n="vipn-desc">VPN-сервис в формате Telegram-бота с серверами в Нидерландах. Поддерживает современные протоколы Xray и OpenVPN для максимальной скорости и безопасности. Простая настройка и управление через удобный интерфейс бота.</p>
+                        <a href="https://t.me/ViPNtgbot" target="_blank" class="project-link">
+                            <span data-i18n="open-telegram">Открыть в Telegram</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <img src="icons/vipn-usa.png" alt="ViPN USA" class="project-icon" onerror="this.style.display='none'">
+                        <h3 class="project-title">ViPN USA</h3>
+                        <p class="project-description" data-i18n="vipn-usa-desc">VPN-сервис с серверами в США, реализованный как Telegram-бот. Использует протоколы Xray и OpenVPN для обеспечения высокой скорости соединения и защиты данных. Идеальное решение для доступа к контенту и обеспечения приватности.</p>
+                        <a href="https://t.me/ViPNUSAbot" target="_blank" class="project-link">
+                            <span data-i18n="open-telegram">Открыть в Telegram</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <img src="icons/image-ai.png" alt="Video AI" class="project-icon" onerror="this.style.display='none'">
+                        <h3 class="project-title">Image AI</h3>
+                        <p class="project-description" data-i18n="image-ai-desc">Инновационный Telegram-бот для оживления фотографий с помощью искусственного интеллекта. Превращает статичные изображения в динамичные видео, создавая эффект движения и оживления. Просто загрузите фото и получите анимированный результат.</p>
+                        <a href="https://t.me/imagetovideoaibot" target="_blank" class="project-link">
+                            <span data-i18n="open-telegram">Открыть в Telegram</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <img src="icons/octopusmm.png" alt="OctopuSMM" class="project-icon" onerror="this.style.display='none'">
+                        <h3 class="project-title">OctopuSMM</h3>
+                        <p class="project-description" data-i18n="octopusmm-desc">Мощный помощник для авторов Telegram-каналов. Анализирует конкурентов, помогает в написании постов и оптимизации контента. Инструмент для роста и развития канала с использованием данных и аналитики.</p>
+                        <a href="https://t.me/octopusmmbot" target="_blank" class="project-link">
+                            <span data-i18n="open-telegram">Открыть в Telegram</span>
+                            <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="social-section">
+                <h2 class="section-title" data-i18n="contacts-title">Контакты</h2>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/aleksandr-beliakov/" target="_blank" class="social-link">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/sanekbel" target="_blank" class="social-link">
+                        GitHub
+                    </a>
+                    <a href="https://t.me/sanekbel" target="_blank" class="social-link">
+                        Telegram
+                    </a>
+                    <a href="mailto:mail@abeliakov.cc" class="social-link">
+                        Email
+                    </a>
+                </div>
+            </section>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
