@@ -8,8 +8,7 @@ const translations = {
         'open-site': 'Открыть сайт',
         'brokenvpn-desc': 'VPN-сервис с быстрым подключением и простой настройкой. Современные протоколы, стабильные серверы и понятный интерфейс без лишних шагов.',
         'isittrue-desc': 'Telegram-бот для проверки видео на фейки и манипуляции. Анализирует контент из Instagram, TikTok и YouTube, определяя подделки и редактирование. Помогает отличить реальные факты видео от сгенерированных или измененных с помощью ИИ.',
-        'events-list-desc': 'Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.',
-        'image-ai-desc': 'Инновационный Telegram-бот для оживления фотографий с помощью искусственного интеллекта. Превращает статичные изображения в динамичные видео, создавая эффект движения и оживления. Просто загрузите фото и получите анимированный результат.'
+        'events-list-desc': 'Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.'
     },
     en: {
         'bio': 'Hello! I love learning new things and immediately applying knowledge in practice.',
@@ -19,8 +18,7 @@ const translations = {
         'open-site': 'Open website',
         'brokenvpn-desc': 'VPN service with fast connection and simple setup. Modern protocols, stable servers, and a clear interface with no extra steps.',
         'isittrue-desc': 'Telegram bot for checking videos for fakes and manipulations. Analyzes content from Instagram, TikTok, and YouTube, detecting forgeries and editing. Helps distinguish real video facts from AI-generated or modified ones.',
-        'events-list-desc': 'Telegram bot for managing event lists. Helps track and organize events.',
-        'image-ai-desc': 'Innovative Telegram bot for bringing photos to life using artificial intelligence. Transforms static images into dynamic videos, creating movement and animation effects. Simply upload a photo and get an animated result.'
+        'events-list-desc': 'Telegram bot for managing event lists. Helps track and organize events.'
     }
 };
 
