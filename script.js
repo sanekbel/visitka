@@ -5,24 +5,22 @@ const translations = {
         'projects-title': 'Проекты',
         'contacts-title': 'Контакты',
         'open-telegram': 'Открыть в Telegram',
-        'events-list-desc': 'Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.',
+        'open-site': 'Открыть сайт',
+        'brokenvpn-desc': 'VPN-сервис с быстрым подключением и простой настройкой. Современные протоколы, стабильные серверы и понятный интерфейс без лишних шагов.',
         'isittrue-desc': 'Telegram-бот для проверки видео на фейки и манипуляции. Анализирует контент из Instagram, TikTok и YouTube, определяя подделки и редактирование. Помогает отличить реальные факты видео от сгенерированных или измененных с помощью ИИ.',
-        'vipn-desc': 'VPN-сервис в формате Telegram-бота с серверами в Нидерландах. Поддерживает современные протоколы Xray и OpenVPN для максимальной скорости и безопасности. Простая настройка и управление через удобный интерфейс бота.',
-        'vipn-usa-desc': 'VPN-сервис с серверами в США, реализованный как Telegram-бот. Использует протоколы Xray и OpenVPN для обеспечения высокой скорости соединения и защиты данных. Идеальное решение для доступа к контенту и обеспечения приватности.',
-        'image-ai-desc': 'Инновационный Telegram-бот для оживления фотографий с помощью искусственного интеллекта. Превращает статичные изображения в динамичные видео, создавая эффект движения и оживления. Просто загрузите фото и получите анимированный результат.',
-        'octopusmm-desc': 'Мощный помощник для авторов Telegram-каналов. Анализирует конкурентов, помогает в написании постов и оптимизации контента. Инструмент для роста и развития канала с использованием данных и аналитики.'
+        'events-list-desc': 'Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.',
+        'image-ai-desc': 'Инновационный Telegram-бот для оживления фотографий с помощью искусственного интеллекта. Превращает статичные изображения в динамичные видео, создавая эффект движения и оживления. Просто загрузите фото и получите анимированный результат.'
     },
     en: {
         'bio': 'Hello! I love learning new things and immediately applying knowledge in practice.',
         'projects-title': 'Projects',
         'contacts-title': 'Contacts',
         'open-telegram': 'Open in Telegram',
-        'events-list-desc': 'Telegram bot for managing event lists. Helps track and organize events.',
+        'open-site': 'Open website',
+        'brokenvpn-desc': 'VPN service with fast connection and simple setup. Modern protocols, stable servers, and a clear interface with no extra steps.',
         'isittrue-desc': 'Telegram bot for checking videos for fakes and manipulations. Analyzes content from Instagram, TikTok, and YouTube, detecting forgeries and editing. Helps distinguish real video facts from AI-generated or modified ones.',
-        'vipn-desc': 'VPN service in Telegram bot format with servers in the Netherlands. Supports modern Xray and OpenVPN protocols for maximum speed and security. Simple setup and management through a convenient bot interface.',
-        'vipn-usa-desc': 'VPN service with servers in the USA, implemented as a Telegram bot. Uses Xray and OpenVPN protocols to ensure high connection speed and data protection. Perfect solution for content access and privacy.',
-        'image-ai-desc': 'Innovative Telegram bot for bringing photos to life using artificial intelligence. Transforms static images into dynamic videos, creating movement and animation effects. Simply upload a photo and get an animated result.',
-        'octopusmm-desc': 'Powerful assistant for Telegram channel authors. Analyzes competitors, helps with post writing and content optimization. Tool for channel growth and development using data and analytics.'
+        'events-list-desc': 'Telegram bot for managing event lists. Helps track and organize events.',
+        'image-ai-desc': 'Innovative Telegram bot for bringing photos to life using artificial intelligence. Transforms static images into dynamic videos, creating movement and animation effects. Simply upload a photo and get an animated result.'
     }
 };
 
