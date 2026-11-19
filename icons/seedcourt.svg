@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Always the light icon, whatever the theme; favicon.ico and apple-touch-icon.png too -->
+  <rect width="64" height="64" rx="14" fill="#f4f5ef"/>
+  <g transform="translate(4 4) scale(.4667)">
+    <path d="M16 20H31Q40 20 40 29V37Q40 46 31 46H16M16 74H31Q40 74 40 83V91Q40 100 31 100H16M40 33H55Q64 33 64 42V78Q64 87 55 87H40M64 60H78" fill="none" stroke="#11130b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="93" cy="60" r="15" fill="#d4f23c" stroke="#11130b" stroke-width="4"/>
+  </g>
+</svg>

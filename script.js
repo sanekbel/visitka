@@ -1,109 +1,122 @@
-// Переводы для мультиязычности
 const translations = {
     ru: {
-        'bio': 'Привет! Я люблю изучать новое и сразу применять знания на практике.',
-        'projects-title': 'Проекты',
-        'contacts-title': 'Контакты',
-        'open-telegram': 'Открыть в Telegram',
-        'open-site': 'Открыть сайт',
-        'brokenvpn-desc': 'VPN-сервис с быстрым подключением и простой настройкой. Современные протоколы, стабильные серверы и понятный интерфейс без лишних шагов.',
-        'isittrue-desc': 'Telegram-бот для проверки видео на фейки и манипуляции. Анализирует контент из Instagram, TikTok и YouTube, определяя подделки и редактирование. Помогает отличить реальные факты видео от сгенерированных или измененных с помощью ИИ.',
-        'events-list-desc': 'Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.'
+        'role': 'Предприниматель и AQA‑инженер',
+        'theme': 'Сменить тему',
+        'intro-a': 'Делаю продукты для падела: турниры для клубов в ',
+        'intro-b': ' и запись к тренерам в ',
+        'intro-c': '. А ещё ',
+        'intro-d': ' — VPN, который включается в одно касание.',
+        'intro-2': 'Люблю изучать новое и сразу применять знания на практике.',
+        'projects': 'Проекты',
+        'contacts': 'Контакты',
+        'seed': 'Турниры по паделу для клубов: сетки, расписание, счёт с кортов и ТВ-табло',
+        'padel': 'Запись к тренеру в Telegram: слоты, лист ожидания, оплаты',
+        'vpn': 'VPN, который включается в одно касание'
     },
     en: {
-        'bio': 'Hello! I love learning new things and immediately applying knowledge in practice.',
-        'projects-title': 'Projects',
-        'contacts-title': 'Contacts',
-        'open-telegram': 'Open in Telegram',
-        'open-site': 'Open website',
-        'brokenvpn-desc': 'VPN service with fast connection and simple setup. Modern protocols, stable servers, and a clear interface with no extra steps.',
-        'isittrue-desc': 'Telegram bot for checking videos for fakes and manipulations. Analyzes content from Instagram, TikTok, and YouTube, detecting forgeries and editing. Helps distinguish real video facts from AI-generated or modified ones.',
-        'events-list-desc': 'Telegram bot for managing event lists. Helps track and organize events.'
+        'role': 'Entrepreneur and AQA engineer',
+        'theme': 'Toggle theme',
+        'intro-a': 'I build products for padel: tournaments for clubs with ',
+        'intro-b': ' and coach bookings with ',
+        'intro-c': '. Also ',
+        'intro-d': ', a VPN that turns on with one tap.',
+        'intro-2': 'I love learning new things and immediately applying knowledge in practice.',
+        'projects': 'Projects',
+        'contacts': 'Contacts',
+        'seed': 'Padel tournaments for clubs: draws, schedule, live scores and a TV board',
+        'padel': 'Coach bookings in Telegram: slots, waiting list, payments',
+        'vpn': 'A VPN that turns on with one tap'
     }
 };
 
-// Функция переключения языка
-function switchLanguage(lang) {
-    // Обновляем атрибут lang у html элемента
-    document.documentElement.lang = lang;
-    
-    // Обновляем все элементы с data-i18n атрибутом
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key];
-        }
+const root = document.documentElement;
+const SWAP_OUT_MS = 120;
+const THEME_ANIM_MS = 300;
+
+function read(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+}
+
+function write(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) { /* storage blocked: the choice just isn't remembered */ }
+}
+
+/* Language */
+
+function applyLanguage(lang) {
+    const dict = translations[lang];
+    root.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const text = dict[el.getAttribute('data-i18n')];
+        if (text) el.textContent = text;
     });
-    
-    // Сохраняем выбранный язык в localStorage
-    localStorage.setItem('language', lang);
-    
-    // Обновляем активную кнопку переключателя
+    document.querySelectorAll('[data-i18n-label]').forEach(el => {
+        const text = dict[el.getAttribute('data-i18n-label')];
+        if (text) el.setAttribute('aria-label', text);
+    });
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active');
-        }
+        btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
     });
 }
 
-// Плавная анимация появления элементов при скролле
+let swapTimer = null;
+
+function switchLanguage(lang) {
+    if (root.lang === lang) return;
+    write('language', lang);
+    clearTimeout(swapTimer);
+    document.body.classList.add('is-swapping');
+    swapTimer = setTimeout(() => {
+        applyLanguage(lang);
+        document.body.classList.remove('is-swapping');
+    }, SWAP_OUT_MS);
+}
+
+/* Theme: follows the system until the visitor picks one */
+
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function effectiveTheme() {
+    const chosen = root.getAttribute('data-theme');
+    if (chosen === 'light' || chosen === 'dark') return chosen;
+    return systemDark.matches ? 'dark' : 'light';
+}
+
+const THEME_BG = { light: '#fbfbfa', dark: '#0e0e0e' };
+const themeMetas = Array.from(document.querySelectorAll('meta[name="theme-color"]'));
+
+function syncScheme() {
+    const scheme = effectiveTheme();
+    root.setAttribute('data-scheme', scheme);
+    // Mobile browser bar follows a manual choice too, not only the system setting
+    const chosen = root.hasAttribute('data-theme');
+    themeMetas.forEach(meta => {
+        const own = meta.media.includes('dark') ? THEME_BG.dark : THEME_BG.light;
+        meta.setAttribute('content', chosen ? THEME_BG[scheme] : own);
+    });
+}
+
+let themeTimer = null;
+
+function toggleTheme() {
+    const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    clearTimeout(themeTimer);
+    root.classList.add('theme-anim');
+    root.setAttribute('data-theme', next);
+    write('theme', next);
+    syncScheme();
+    themeTimer = setTimeout(() => root.classList.remove('theme-anim'), THEME_ANIM_MS);
+}
+
+syncScheme();
+systemDark.addEventListener('change', syncScheme);
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Загружаем сохраненный язык или используем русский по умолчанию
-    const savedLang = localStorage.getItem('language') || 'ru';
-    switchLanguage(savedLang);
-    
-    // Обработчики для кнопок переключения языка
+    const saved = read('language');
+    applyLanguage(saved === 'en' ? 'en' : 'ru');
+
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang');
-            switchLanguage(lang);
-        });
+        btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
     });
-
-    // Анимация появления контейнера
-    const container = document.querySelector('.container');
-    container.classList.add('fade-in');
-
-    // Настройка Intersection Observer для анимации элементов при скролле
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Анимация карточек проектов
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-    });
-
-    // Анимация социальных ссылок
-    const socialLinks = document.querySelectorAll('.social-link');
-    socialLinks.forEach((link, index) => {
-        link.style.opacity = '0';
-        link.style.transform = 'translateY(20px)';
-        link.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
-        observer.observe(link);
-    });
-
-    // Анимация заголовков секций
-    const sectionTitles = document.querySelectorAll('.section-title');
-    sectionTitles.forEach(title => {
-        title.style.opacity = '0';
-        title.style.transform = 'translateY(20px)';
-        title.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(title);
-    });
+    document.querySelector('.theme-btn').addEventListener('click', toggleTheme);
 });

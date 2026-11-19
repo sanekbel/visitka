@@ -2,79 +2,90 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aleksandr Beliakov — Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Aleksandr Beliakov</title>
+    <meta name="description" content="Aleksandr Beliakov — предприниматель и AQA-инженер. Seedcourt, Padel CRM, BrokenVPN.">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfbfa">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e0e0e">
+    <meta property="og:title" content="Aleksandr Beliakov">
+    <meta property="og:description" content="Предприниматель и AQA-инженер. Seedcourt, Padel CRM, BrokenVPN.">
+    <meta property="og:image" content="https://abeliakov.cc/avatar.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Before first paint: saved theme (if any) and the flag that enables the entrance animation.
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+            var theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
+            else theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            root.setAttribute('data-scheme', theme);
+        })();
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="language-switcher">
-            <button class="lang-btn active" data-lang="ru">RU</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-        </div>
-        <header class="header">
-            <div class="profile-section">
-                <img src="profile_new.jpg" alt="Aleksandr Beliakov" class="profile-image">
-                <h1 class="name">Aleksandr Beliakov</h1>
-                <p class="title">Entrepreneur / AQA Engineer</p>
-                <p class="bio" data-i18n="bio">Привет! Я люблю изучать новое и сразу применять знания на практике.</p>
+    <main class="col">
+        <header class="head in" style="--delay: 0ms">
+            <img class="ava" src="avatar.jpg" alt="Aleksandr Beliakov" width="48" height="48">
+            <div class="who">
+                <b>Aleksandr Beliakov</b>
+                <span class="sw" data-i18n="role">Предприниматель и AQA‑инженер</span>
+            </div>
+            <div class="tools">
+                <div class="lang" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-lang="ru" aria-pressed="true">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+                </div>
+                <button type="button" class="icon-btn theme-btn" aria-label="Сменить тему" data-i18n-label="theme">
+                    <svg class="ico ico-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="3.4"/><path d="M10 2.5v1.6M10 15.9v1.6M2.5 10h1.6M15.9 10h1.6M4.7 4.7l1.1 1.1M14.2 14.2l1.1 1.1M4.7 15.3l1.1-1.1M14.2 5.8l1.1-1.1"/></svg>
+                    <svg class="ico ico-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 12.2A6.8 6.8 0 0 1 7.8 3.5a6.8 6.8 0 1 0 8.7 8.7z"/></svg>
+                </button>
             </div>
         </header>
 
-        <main>
-            <!-- Основной акцент на проектах -->
-            <section class="projects-section">
-                <h2 class="section-title" data-i18n="projects-title">Проекты</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="icons/brokenvpn.png" alt="BrokenVPN" class="project-icon" onerror="this.style.display='none'">
-                        <h3 class="project-title">BrokenVPN</h3>
-                        <p class="project-description" data-i18n="brokenvpn-desc">VPN-сервис с быстрым подключением и простой настройкой. Современные протоколы, стабильные серверы и понятный интерфейс без лишних шагов.</p>
-                        <a href="https://brokenvpn.com" target="_blank" class="project-link">
-                            <span data-i18n="open-site">Открыть сайт</span>
-                            <span class="arrow">→</span>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <img src="icons/isittrue.png" alt="True Story" class="project-icon" onerror="this.style.display='none'">
-                        <h3 class="project-title">True Story</h3>
-                        <p class="project-description" data-i18n="isittrue-desc">Telegram-бот для проверки видео на фейки и манипуляции. Анализирует контент из Instagram, TikTok и YouTube, определяя подделки и редактирование. Помогает отличить реальные факты видео от сгенерированных или измененных с помощью ИИ.</p>
-                        <a href="https://t.me/truestorywtfbot" target="_blank" class="project-link">
-                            <span data-i18n="open-telegram">Открыть в Telegram</span>
-                            <span class="arrow">→</span>
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <img src="icons/events-list.png" alt="Events List" class="project-icon" onerror="this.style.display='none'">
-                        <h3 class="project-title">Events List</h3>
-                        <p class="project-description" data-i18n="events-list-desc">Telegram-бот для управления списком событий. Помогает отслеживать и организовывать мероприятия.</p>
-                        <a href="https://t.me/events_list_bot" target="_blank" class="project-link">
-                            <span data-i18n="open-telegram">Открыть в Telegram</span>
-                            <span class="arrow">→</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
+        <p class="intro in sw" style="--delay: 70ms"><span data-i18n="intro-a">Делаю продукты для падела: турниры для клубов в </span><a href="https://seedcourt.app" target="_blank" rel="noopener">Seedcourt</a><span data-i18n="intro-b"> и запись к тренерам в </span><a href="https://padelcrm.app" target="_blank" rel="noopener">Padel CRM</a><span data-i18n="intro-c">. А ещё </span><a href="https://brokenvpn.com" target="_blank" rel="noopener">BrokenVPN</a><span data-i18n="intro-d"> — VPN, который включается в одно касание.</span></p>
+        <p class="intro muted in sw" style="--delay: 120ms" data-i18n="intro-2">Люблю изучать новое и сразу применять знания на практике.</p>
 
-            <section class="social-section">
-                <h2 class="section-title" data-i18n="contacts-title">Контакты</h2>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/aleksandr-beliakov/" target="_blank" class="social-link">
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/sanekbel" target="_blank" class="social-link">
-                        GitHub
-                    </a>
-                    <a href="https://t.me/sanekbel" target="_blank" class="social-link">
-                        Telegram
-                    </a>
-                    <a href="mailto:mail@abeliakov.cc" class="social-link">
-                        Email
-                    </a>
+        <h2 class="h2 in sw" style="--delay: 170ms" data-i18n="projects">Проекты</h2>
+        <div class="bento">
+            <a class="card wide in" style="--delay: 210ms" href="https://seedcourt.app" target="_blank" rel="noopener">
+                <div class="meta">
+                    <span class="pi"><img src="icons/seedcourt.svg" alt="" width="36" height="36"></span>
+                    <div class="mt"><b>Seedcourt</b><span class="sw" data-i18n="seed">Турниры по паделу для клубов: сетки, расписание, счёт с кортов и ТВ-табло</span></div>
+                    <span class="dom">seedcourt.app<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></span>
                 </div>
-            </section>
-        </main>
-    </div>
+                <div class="media"><div class="laptop"><img src="shots/seedcourt.jpg" alt="Seedcourt: страница корта с живым счётом" width="1280" height="800" decoding="async"></div></div>
+            </a>
+            <a class="card in" style="--delay: 250ms" href="https://padelcrm.app" target="_blank" rel="noopener">
+                <div class="meta">
+                    <span class="pi"><img src="icons/padelcrm.png" alt="" width="36" height="36"></span>
+                    <div class="mt"><b>Padel CRM</b><span class="sw" data-i18n="padel">Запись к тренеру в Telegram: слоты, лист ожидания, оплаты</span></div>
+                </div>
+                <div class="media"><div class="phone"><img src="shots/padelcrm.jpg" alt="Padel CRM: расписание тренера на телефоне" width="480" height="1039" decoding="async"></div></div>
+            </a>
+            <a class="card in" style="--delay: 285ms" href="https://brokenvpn.com" target="_blank" rel="noopener">
+                <div class="meta">
+                    <span class="pi"><img class="bleed" src="icons/brokenvpn.png" alt="" width="36" height="36"></span>
+                    <div class="mt"><b>BrokenVPN</b><span class="sw" data-i18n="vpn">VPN, который включается в одно касание</span></div>
+                </div>
+                <div class="media"><div class="phone"><img src="shots/brokenvpn.jpg" alt="BrokenVPN на телефоне" width="480" height="1039" decoding="async"></div></div>
+            </a>
+        </div>
+
+        <h2 class="h2 in sw" style="--delay: 320ms" data-i18n="contacts">Контакты</h2>
+        <div class="rows in" style="--delay: 320ms">
+            <a class="row" href="https://t.me/needmorenoless" target="_blank" rel="noopener"><b>Telegram</b><span>@needmorenoless</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
+            <a class="row" href="mailto:mail@abeliakov.cc"><b>Email</b><span>mail@abeliakov.cc</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
+            <a class="row" href="https://www.linkedin.com/in/aleksandr-beliakov/" target="_blank" rel="noopener"><b>LinkedIn</b><span>aleksandr-beliakov</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
+            <a class="row" href="https://github.com/sanekbel" target="_blank" rel="noopener"><b>GitHub</b><span>sanekbel</span><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
+        </div>
+        <p class="foot in" style="--delay: 320ms">© 2026 Aleksandr Beliakov</p>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
